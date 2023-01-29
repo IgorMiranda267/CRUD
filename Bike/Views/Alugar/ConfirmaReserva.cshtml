@@ -1,0 +1,286 @@
+@model BikeVale.Models.Aluga;
+@using MySqlConnector;
+@{
+    ViewData["Title"] = "ConfirmReserva";
+    var id = Model.IdBicicleta;
+    var Id_bicicleta = 0;
+    var Modelo = "";
+    var Modalidade = "";
+    var Qtd_marchas = 0;
+    var Status_emprestimo = 0;
+    var valor = "0";
+    var totalDias = 0;
+    var dataInicio = "";
+    if (id == 599)
+        valor = "70,00";
+    if (id == 600)
+        valor = "90,00";
+
+    using (MySqlConnection connection = new
+    MySqlConnection("server=localhost;userid=teste@;password=123456;database=bancotp"))
+    {
+        connection.Open();
+        using (MySqlCommand command = new MySqlCommand($"SELECT * FROM bicicleta where bicicleta.Id_bicicleta = {id};",
+        connection))
+        using (MySqlDataReader reader = command.ExecuteReader())
+        {
+            while (reader.Read())
+            {
+                Id_bicicleta = Convert.ToInt32(reader["Id_bicicleta"]);
+                Modelo = (reader["Modelo"]).ToString();
+                Modalidade = (reader["Modalidade"]).ToString();
+                Qtd_marchas = Convert.ToInt32(reader["Qtd_marchas"]);
+                Status_emprestimo = Convert.ToInt32(reader["Status_emprestimo"]);
+                Model.IdBicicleta = Id_bicicleta;
+            }
+        }
+    }
+}
+<div class="container padding">
+    <div class="row">
+        <div class="col">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                <img src="/images/img/SPECIALIZED-FUSE-S.jpg" alt="SPECIALIZED-FUSE-S">
+            </button>
+            <!-- Modal -->
+            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <img src="/images/img/SPECIALIZED-FUSE-S.jpg" alt="SPECIALIZED-FUSE-S" class="imgModal">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="info-bike col">
+            <div class="info-ln">
+                <h3>Detalhes</h3>
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <th scope="row"></th>
+                            <td>Medida: </td>
+                            <td>17</td>
+                        </tr>
+                        <tr>
+                            <th scope="row"></th>
+                            <td>Estilo: </td>
+                            <td>MTB</td>
+                        </tr>
+                        <tr>
+                            <th scope="row"></th>
+                            <td>Marchas: </td>
+                            <td>12V</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col">
+            <h3>Recursos</h3>
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th scope="row"></th>
+                        <td>Aro 29</td>
+                        <td>Freio disco hidráulico</td>
+                    </tr>
+                    <tr>
+                        <th scope="row"></th>
+                        <td>Grupo Sram</td>
+                        <td>Pneu 3.0</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row title-h1">
+        <h2>Detalhes do alugel</h2>
+    </div>
+    <div class="row">
+        <form asp-action="Detalhes">
+            <table class="table" onclick="calcularIntervalo()">
+                <thead>
+                <tbody>
+                    <tr class="table-dark">
+                        <th scope="row"></th>
+                        <td>Local da Retirada</td>
+                        <td>Local da devolução</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th scope="row"></th>
+                        <td>Rua B, 122, Centro - Diamantina MG</td>
+                        <td>Rua B, 122, Centro - Diamantina MG</td>
+                        <td></td>
+                    </tr>
+                    <tr class="table-dark">
+                        <th scope="row"></th>
+                        <td>Data e hora retirada</td>
+                        <td>Data e hora devolução</td>
+                        <td>Tempo de uso</td>
+                    </tr>
+                    <tr>
+                        <th scope="row"></th>
+                        <td>
+                            <input type="datetime-local" id="data-inicio" class="input-data-reserva" name="data-inicio"
+                                min="2023-01-29T00:00" asp-for="@Model.Datainicio"/></td>
+
+                        <td>
+                            <input type="datetime-local" id="data-devolucao" class="input-data-reserva"
+                                name="data-devolucao" value="" min="2023-01-29T00:00"
+                                onclick="calcularIntervalo()" asp-for="@Model.DataFim"/>
+                        </td>
+                        <td><span id="dados">0 dia</span></td>
+                    </tr>
+                    <tr class="table-dark">
+                        <th scope="row"></th>
+                        <td>Bike escolhida</td>
+                        <td>Preço</td>
+                        <td>Total</td>
+                    </tr>
+                    <tr>
+                        <th scope="row"></th>
+                        <td>@Modelo </td>
+                        <td>R$ @valor </td>
+                        <td>R$ @totalDias </td>
+                    </tr>
+                    <tr class="table-dark">
+                        <th scope="row"></th>
+                        <td colspan="3" class="text-center">Total</td>
+                    </tr>
+                    <tr>
+                        <th scope="row"></th>
+                        <td></td>
+                        <td>Pague na retirada:</td>
+                        <td>R$ @valor</td>
+                    </tr>
+                    <tr class="table-dark">
+                        <th scope="row"></th>
+                        <td></td>
+                        <td>Total geral:</td>
+                        <td>R$ @valor</td>
+                    </tr>
+                </tbody>
+            </table>
+            <input type="submit" value="Alugar" class="btn btn-green text-end" />
+            </form>
+    </div>
+
+    <div class="padding"></div>
+    
+    <div class="row bg-gray">
+        <form action="POST" class="row">
+            <div class="row">
+                <label for="user" class="title-h2">Já é cliente?</label>
+            </div>
+            <div class="col">
+                <input type="text" name="" id="user" placeholder="E-mail" class="input-data-reserva">
+            </div>
+            <div class="col">
+                <input type="text" name="" id="password" placeholder="Senha" class="input-data-reserva">
+            </div>
+            <div class="col">
+                <input type="submit" value="Login" class="btn btn-green btn-decorator">
+            </div>
+        </form>
+    </div>
+
+    <div class="padding"></div>
+    <div class="row">
+        <h2>Cadastre-se</h2>
+    </div>
+    <div class="row">
+        <div class="input-group mb-3 col">
+            <span class="input-group-text" id="basic-addon1"></span>
+            <input type="text" class="form-control" placeholder="Nome">
+        </div>
+        <div class="input-group mb-3 col">
+            <span class="input-group-text" id="basic-addon2"></span>
+            <input type="text" class="form-control" placeholder="CPF">
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-group mb-3 col">
+            <span class="input-group-text" id="basic-addon3"></span>
+            <input type="text" class="form-control" placeholder="E-mail">
+        </div>
+        <div class="input-group mb-3 col">
+            <span class="input-group-text" id="basic-addon4"></span>
+            <input type="text" class="form-control" placeholder="Endereço">
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-group mb-3 col">
+            <span class="input-group-text" id="basic-addon6"></span>
+            <input type="text" class="form-control" placeholder="Cidade">
+        </div>
+        <div class="input-group mb-3 col">
+            <span class="input-group-text" id="basic-addon7"></span>
+            <input type="text" class="form-control" placeholder="CEP">
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-group mb-3 col">
+            <span class="input-group-text" id="basic-addon8"></span>
+            <input type="tel" id="celular" name="celular" maxlength="15" placeholder="(00) 00000-0000"
+                pattern="\([0-9]{2}\) [0-9]{5}-[0-9]{4}">
+        </div>
+        <div class="col">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <input type="checkbox" name="" id="mark1">
+            <label for="mark1"><span>Concordo com os termos</span></label>
+        </div>
+        <div class="col">
+            <input type="radio" name="" id="mark2" checked>
+            <label for="mark2"><span>Pague na retirada</span></label>
+        </div>
+        <div class="col">
+            <button type="submit" class="btn btn-green btn-decorator">Cadastre-se</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    const date = new Date();
+    date.setHours(date.getHours() - 3);
+    document.getElementById("data-inicio").value = date.toISOString().slice(0, 16);
+     document.getElementById("data-inicio").min = date.toISOString().slice(0, 16);
+
+    Model.Datainicio =  document.getElementById("data-inicio").value;
+
+    var dat = document.getElementById("dados");
+
+    function calcularIntervalo() {
+        var dataInicio = document.getElementById("data-inicio").value;
+        var dataFim = document.getElementById("data-devolucao").value;
+
+        if (dataInicio != '' && dataFim != '') {
+            if (dataInicio > dataFim) {
+
+
+                alert("Insira intervalo válido");
+                document.getElementById("data-inicio").value = '';
+                document.getElementById("data-devolucao").value = '';
+
+            }
+
+            else {
+                var diferencaEmMilisegundos = new Date(dataFim) - new Date(dataInicio);
+                var intervalo = Math.round(diferencaEmMilisegundos / (1000 * 60 * 60 * 24));
+                intervalo > 1 ? dat.textContent = intervalo + " dias" : dat.textContent = intervalo + " dia";
+            }
+        }
+
+    }
+</script>
+</div>
