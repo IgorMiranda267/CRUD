@@ -7,77 +7,81 @@
     var idTelefone = random.Next(66667, 99999);
 }
 <div class="container">
-    <h1>Informações Pessoais</h1>
+    <div class="padding"></div>
+    <h1>Cadastro de Cliente</h1>
     <div class="row">
         <form asp-action="cadastroClientePost" class="col">
-            <label for="idCliente">ID do Cliente:</label>
-            <div class="input-group mb-3 col">
-                <span class="input-group-text" id="basic-addon1">#</span>
-                <input type="text" id="idCliente" value = @idCliente name="idCliente">
+            <div class="mb-3 invisivel">
+                <label class="form-label" type="text" for="idCliente">ID do Cliente:</label>
+                <input class="form-control" type="text" id="idCliente" value = @idCliente name="idCliente">
             </div>
-            <label for="nome">Nome:</label>
-            <div class="input-group mb-3 col">
-                <span class="input-group-text" id="basic-addon1">#</span>
-                <input type="text" id="nome" name="nome">
+            
+            <div class="mb-3">
+                <label class="form-label" type="text" for="nome">Nome:</label>
+                <input class="form-control" type="text" id="nome" name="nome">
             </div>
-            <label for="sobrenome">Sobrenome:</label>
-            <div class="input-group mb-3 col">
-                <span class="input-group-text" id="basic-addon1">#</span>
-                <input type="text" id="sobrenome" name="sobrenome">
+            
+            <div class="mb-3">
+                <label class="form-label" type="text" for="sobrenome">Sobrenome:</label>
+                <input class="form-control" type="text" id="sobrenome" name="sobrenome">
             </div>
-            <label for="cpf">CPF:</label>
-            <div class="input-group mb-3 col">
-                <span class="input-group-text" id="basic-addon1">#</span>
-                <input type="text" id="cpf" name="cpf">
+            
+            <div class="mb-3">
+                <label class="form-label" type="text" for="cpf">CPF:</label>
+                <input class="form-control" type="text" id="cpf" name="cpf">
             </div>
-            <label for="email">E-mail:</label>
-            <div class="input-group mb-3 col">
-                <span class="input-group-text" id="basic-addon1">#</span>
-                <input type="email" id="email" name="email">
+            
+            <div class="mb-3">
+                <label class="form-label" type="text" for="email">E-mail:</label>
+                <input class="form-control" type="email" id="email" name="email">
             </div>
-            <label for="rua">Rua:</label>
-            <div class="input-group mb-3 col">
-                <span class="input-group-text" id="basic-addon1">#</span>
-                <input type="text" id="rua" name="rua">
+            
+            <div class="mb-3">
+                <label class="form-label" type="text" for="rua">Rua:</label>
+                <input class="form-control" type="text" id="rua" name="rua">
             </div>
-            <label for="numero">Número:</label>
-            <div class="input-group mb-3 col">
-                <span class="input-group-text" id="basic-addon1">#</span>
-                <input type="text" id="numero" name="numero">
+            
+            <div class="mb-3">
+                <label class="form-label" type="text" for="numero">Número:</label>
+                <input class="form-control" type="text" id="numero" name="numero">
             </div>
-            <label for="cidade">Cidade:</label>
-            <div class="input-group mb-3 col">
-                <span class="input-group-text" id="basic-addon1">#</span>
-                <input type="text" id="cidade" name="cidade">
+            
+            <div class="mb-3">
+                <label class="form-label" type="text" for="cidade">Cidade:</label>
+                <input class="form-control" type="text" id="cidade" name="cidade">
             </div>
-            <label for="cep">CEP:</label>
-            <div class="input-group mb-3 col">
-                <span class="input-group-text" id="basic-addon1">#</span>
-                <input type="text" id="cep" name="cep">
+           
+            <div class="mb-3">
+                 <label class="form-label" type="text" for="cep">CEP:</label>
+                <input class="form-control" ype="text" id="cep" name="cep">
             </div>
-            <label for="Ddd">DDD:</label>
-            <div class="input-group mb-3 col">
-                <span class="input-group-text" id="basic-addon1">#</span>
-                <input type="text" id="Ddd" name="Ddd">
+            
+            <div class="mb-3">
+                <label class="form-label" type="text" for="Ddd">DDD:</label>
+                <input class="form-control" type="text" id="Ddd" name="Ddd">
             </div>
-            <label for="telefone">Telefone:</label>
-            <div class="input-group mb-3 col">
-                <span class="input-group-text" id="basic-addon1">#</span>
-                <input type="text" id="telefone" name="telefone">
+            
+            <div class="mb-3">
+                <label class="form-label" type="text" for="telefone">Telefone:</label>
+                <input class="form-control" type="text" id="telefone" name="telefone">
             </div>
-            <label for="idEndereco">ID do Endereço:</label>
-            <div class="input-group mb-3 col">
-                <span class="input-group-text" id="basic-addon1">#</span>
-                <input type="text" id="idEndereco" value=@idEndereco name="idEndereco">
-            </div>
-            <label for="idTelefone">ID do Telefone:</label>
-            <div class="input-group mb-3 col">
-                <span class="input-group-text" id="basic-addon1">#</span>
-                <input type="text" id="idTelefone" value=@idTelefone name="idTelefone">
-            </div>
-            <div class="col text-end">
+
+            <div class="mb-3 text-end">
                 <input type="submit" value="Salvar" class="btn btn-green btn-decorator" />
             </div>
+            
+            <div class="mb-3 invisivel">
+                <label class="form-label" type="text" for="idEndereco">ID do Endereço:</label>
+                <input type="text" id="idEndereco" value=@idEndereco name="idEndereco">
+            </div>
+
+            
+            
+            <div class="mb-3 invisivel">
+                <label class="form-label" type="text" for="idTelefone">ID do Telefone:</label> 
+                <input type="text" id="idTelefone" value=@idTelefone name="idTelefone">
+            </div>
         </form>
+        <div class="col"></div>
     </div>
 </div>

@@ -16,39 +16,43 @@
         <h2>Informações básicas</h2>
     </div>
     <div class=" row">
-        <form asp-action="cadastroBicicletaPost" id="formulario">
-            <div class="input-group mb-3 col">
-                <span class="input-group-text" id="basic-addon1">#</span>
+        <form asp-action="cadastroBicicletaPost" id="formulario" class="col">
+            <div class="mb-3 col">
+                <label class="form-label" for="Modelo">Modelo:</label>
                 <input asp-for="Modelo" class="form-control" placeholder="Nome Bike" />
-                <span asp-validation-for="Modelo" class="text-danger"></span>
             </div>
-            <div class="input-group mb-3 col">
-                <span class="input-group-text" id="basic-addon1">#</span>
+
+            <div class="mb-3">
+                <label class="form-label" for="Modalidade">Modalidade:</label>
                 <input asp-for="Modalidade" class="form-control" placeholder="Modalidade" />
-                <span asp-validation-for="Modalidade" class="text-danger"></span>
             </div>
-            <div class="input-group mb-3 col">
-                <span class="input-group-text" id="basic-addon1">#</span>
+
+            <div class="mb-3">
+                <label class="form-label" for="QtdMarchas">Qtd de Marchas:</label>
                 <input asp-for="QtdMarchas" class="form-control" placeholder="Marchas" />
-                <span asp-validation-for="QtdMarchas" class="text-danger"></span>
             </div>
-            <div class="input-group mb-3 col">
-                <span class="input-group-text" id="basic-addon1">#</span>
+
+            <div class="text-end">
+                <input onclick="alerta()" type="submit" value="Salvar" class="btn btn-green btn-decorator" />
+            </div>
+
+            <div class="mb-3 invisivel">
                 <input asp-for="IdBicicleta" value=@idBicicleta class="form-control" />
                 <span asp-validation-for="IdBicicleta" class="text-danger"></span>
             </div>
-            <div class="col text-end">
-                <input onclick="alerta()" type="submit" value="Salvar" class="btn btn-green btn-decorator"/>
-            </div>
+            
+            
+
         </form>
+        <div class="col"></div>
     </div>
 </div>
 
 <script>
-    function alerta(){
+    function alerta() {
         alert("Dados salvos com sucesso!");
     }
-    
+
     function limparFormulario() {
         document.getElementById("formulario").reset();
     }
