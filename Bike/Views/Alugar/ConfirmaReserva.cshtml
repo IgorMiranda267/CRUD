@@ -130,12 +130,12 @@
                         <th scope="row"></th>
                         <td>
                             <input type="datetime-local" id="data-inicio" class="input-data-reserva" name="data-inicio"
-                                min="2023-01-29T00:00" asp-for="@Model.Datainicio"/></td>
+                                min="2023-01-29T00:00" /></td><!--asp-for=""@Model.Datainicio-->
 
                         <td>
                             <input type="datetime-local" id="data-devolucao" class="input-data-reserva"
                                 name="data-devolucao" value="" min="2023-01-29T00:00"
-                                onclick="calcularIntervalo()" asp-for="@Model.DataFim"/>
+                                onclick="calcularIntervalo()" /><!--asp-for=""@Model.DataFim-->
                         </td>
                         <td><span id="dados">0 dia</span></td>
                     </tr>
@@ -256,11 +256,8 @@
     document.getElementById("data-inicio").value = date.toISOString().slice(0, 16);
      document.getElementById("data-inicio").min = date.toISOString().slice(0, 16);
 
-    Model.Datainicio =  document.getElementById("data-inicio").value;
-
-    var dat = document.getElementById("dados");
-
     function calcularIntervalo() {
+         var dat = document.getElementById("dados");
         var dataInicio = document.getElementById("data-inicio").value;
         var dataFim = document.getElementById("data-devolucao").value;
 

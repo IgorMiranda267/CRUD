@@ -833,3 +833,13 @@ img,
 .invisivel{
   visibility: hidden;
 }
+
+.btnAtendente{
+  border: none;
+}
+
+button {
+  color: transparent;
+  border: none;
+  background-color: transparent;
+}
