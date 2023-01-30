@@ -149,8 +149,13 @@
                     <tr>
                         <th scope="row"></th>
                         <td>@Modelo </td>
-                        <td><span id="ValorBike">R$ @valorBike</span></td>
-                        <td><span id="ValorTotal">R$ 70dia</span></td>
+                        <td>
+                            <span>R$ @valorBike</span>
+                            <input type="text" id="ValorBike" class="invisivel" value="@valorBike">
+
+                            
+                        </td>
+                        <td><span id="ValorTotal">R$ 0,00 </span></td>
                     </tr>
                     <tr class="table-dark">
                         <th scope="row"></th>
@@ -160,13 +165,13 @@
                         <th scope="row"></th>
                         <td></td>
                         <td>Pague na retirada:</td>
-                        <td>R$ @valor</td>
+                        <td><span id="ValorTotal1">R$ 0,00 </span></td>
                     </tr>
                     <tr class="table-dark">
                         <th scope="row"></th>
                         <td></td>
                         <td>Total geral:</td>
-                        <td>R$ @valor</td>
+                        <td><span id="ValorTotal2">R$ 0,00 </span></td>
                     </tr>
                 </tbody>
             </table>
@@ -260,7 +265,9 @@
     function calcularIntervalo() {
         var dat = document.getElementById("dados");
         var valorTotal = document.getElementById("ValorTotal");
-        var ValorBike = document.getElementById("ValorBike");
+        var valorTotal1 = document.getElementById("ValorTotal1");
+        var valorTotal2 = document.getElementById("ValorTotal2");
+        var ValorBike = document.getElementById("ValorBike").value;
         var dataInicio = document.getElementById("data-inicio").value;
         var dataFim = document.getElementById("data-devolucao").value;
 
@@ -276,6 +283,8 @@
                 var intervalo = Math.round(diferencaEmMilisegundos / (1000 * 60 * 60 * 24));
                 intervalo > 1 ? dat.textContent = intervalo + " dias" : dat.textContent = intervalo + " dia";
                 valorTotal.textContent = "R$ " + intervalo * ValorBike;
+                valorTotal1.textContent = "R$ " + intervalo * ValorBike;
+                valorTotal2.textContent = "R$ " + intervalo * ValorBike;
             }
         }
 
