@@ -1,6 +1,42 @@
+@model BikeVale.Models.Bicicleta;
+@using BikeVale.Models;
+@using MySqlConnector;
+@{
+    ViewData["Title"] = "ClientesCadastrados";
+    var Id_bicicleta = 0;
+    var Modelo = "";
+    var Modalidade = "";
+    var Qtd_marchas = 0;
+    var Status_emprestimo = 0;
+
+
+    List<Bicicleta> Listabicicleta = new List<Bicicleta>();
+
+    using (MySqlConnection connection = new MySqlConnection("server=localhost;userid=teste@;password=123456;database=bancotp"))
+    {
+        connection.Open();
+        using (MySqlCommand command = new MySqlCommand($"SELECT * From bicicleta;", connection))
+        using (MySqlDataReader reader = command.ExecuteReader())
+        {
+            while (reader.Read())
+            {
+                Id_bicicleta = Convert.ToInt32(reader["Id_bicicleta"]);
+                Modelo = (reader["Modelo"]).ToString();
+                Modalidade = (reader["Modalidade"]).ToString();
+                Qtd_marchas = Convert.ToInt32(reader["Qtd_marchas"]);
+                Status_emprestimo = Convert.ToInt32(reader["Status_emprestimo"]);
+
+                Bicicleta c1 = new Bicicleta(Id_bicicleta, Modelo, Modalidade, Qtd_marchas, Status_emprestimo);
+                Listabicicleta.Add(c1);
+            }
+        }
+    }
+}
+
+
+
+
 <div class="container">
-
-
     <h1 class="title-h1">Bikes disponiveis e Alugadas</h1>
     <div class="container">
         <div class="row">
