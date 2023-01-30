@@ -1,40 +1,51 @@
+@model BikeVale.Models.Atendente
+@{
+    ViewData["Title"] = "CadastroCliente";
+    Random random = new Random();
+    var idAtendente = random.Next(1, 10000);
+    var idEndereco = random.Next(10000, 66666);
+    var idTelefone = random.Next(66667, 99999);
+}
+
 <div class="container">
 
   <h1>Informações Pessoais</h1>
 
   <div class="row">
-    <form action="Post" class="col">
+    <form asp-action="CadastroAtendentePost" class="col">
       <div class="mb-3">
         <label class="form-label" for="nome">Nome:</label>
-        <input class="form-control" type="text" id="nome">
+        <input class="form-control" type="text" id="nome" name="nome">
       </div>
 
       <div class="mb-3">
         <label class="form-label" for="CPF">CPF:</label>
-        <input class="form-control" type="text" id="CPF">
+        <input class="form-control" type="text" id="CPF" name="cpf">
       </div>
       <div class="mb-3">
         <label class="form-label" for="email">E-mail:</label>
-        <input class="form-control" type="text" id="email">
+        <input class="form-control" type="text" id="email" name="email">
       </div>
       <div class="mb-3">
         <label class="form-label" for="Endereço">Endereço:</label>
-        <input class="form-control" type="text" name="" id="Endereço">
+        <input class="form-control" type="text" name="rua" id="rua">
       </div>
       <div class="mb-3">
         <label class="form-label" for="Cidade">Cidade:</label>
-        <input class="form-control" type="text" name="" id="Cidade">
+        <input class="form-control" type="text" name="cidade" id="Cidade">
       </div>
       <div class="mb-3">
         <label class="form-label" for="CEP">CEP:</label>
-        <input class="form-control" type="text" name="" id="CEP">
+        <input class="form-control" type="text" name="cep" id="CEP">
       </div>
       <div class="mb-3">
         <label class="form-label" for="numeroCel">Número de celular:</label>
-        <input class="form-control" type="text" name="" id="numeroCel">
+        <input class="form-control" type="text" name="numero" id="numero">
       </div>
       <button type="submit" class="btn btn-primary">Cadastro</button>
     </form>
     <div class="col"></div>
   </div>
 </div>
+
+<div class="padding"></div>

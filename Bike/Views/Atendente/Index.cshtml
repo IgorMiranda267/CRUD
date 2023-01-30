@@ -16,7 +16,10 @@
                 Olá, atendente, Claudio
             </h2>
         </div>
-        <div class="col"><button type="button" class="btn btn-danger">Sair</button></div>
+        <div class="col">
+        <form asp-controller="Home" asp-action="Index">
+            <button type="submit" class="btn btn-danger">Sair</button>
+        </form>
     </div>
 
     <div class="row">
@@ -24,12 +27,12 @@
             <div class="imgDashBoard">
                 <a href="#">
                     <form asp-action="CadastroCliente" class="btnAtendente">
-                    <button type="submit">
-                        <img src="images\DashBoard\db1.png" alt="">
+                        <button type="submit">
+                            <img src="images\DashBoard\db1.png" alt="">
                             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                             <div class="form-group">
                             </div>
-                    </button>
+                        </button>
                     </form>
                 </a>
             </div>
@@ -45,17 +48,28 @@
 
         <div class="col">
             <div class="imgDashBoard">
-                <a href="#">
-                    <img src="images\DashBoard\db3.png" alt="">
-                </a>
+                <form asp-action="AtendentesCadastrados" class="btnAtendente">
+                    <button type="submit">
+                        <img src="images\DashBoard\db3.png" alt="">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group">
+                        </div>
+                    </button>
+                </form>
             </div>
         </div>
 
+
         <div class="col">
             <div class="imgDashBoard">
-                <a href="#">
-                    <img src="images\DashBoard\db4.png" alt="">
-                </a>
+                <form asp-action="HistoricoBikes" class="btnAtendente">
+                    <button type="submit">
+                        <img src="images\DashBoard\db4.png" alt="">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group">
+                        </div>
+                    </button>
+                </form>
             </div>
         </div>
     </div>
@@ -88,13 +102,24 @@
                 </a>
             </div>
         </div>
+
         <div class="col">
             <div class="imgDashBoard">
-                <a href="#">
-                    <img src="images\DashBoard\db7.png" alt="">
+                <a href="">
+                    <form asp-action="CadastroAtendentePost" class="btnAtendente">
+                        <button type="submit">
+                            <img src="images\DashBoard\db7.png" alt="">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="form-group">
+                            </div>
+                        </button>
+                    </form>
                 </a>
             </div>
         </div>
+
+
+
         <div class="col">
             <div class="imgDashBoard">
                 <a href="#">
@@ -103,6 +128,6 @@
             </div>
         </div>
     </div>
+    <div class="padding"></div>
 </div>
-
-<div class="padding"></div>
+</div>

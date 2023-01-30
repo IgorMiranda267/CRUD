@@ -15,6 +15,7 @@
         <link rel="stylesheet" href="/css/style/style.css" />
         <link rel="stylesheet" href="/css/style/reserva.css" />
         <link rel="stylesheet" href="/css/style/sobre.css" />
+        <link rel="stylesheet" href="/css/style/login.css" />
     </environment>
     <environment names="Staging,Production">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -63,6 +64,13 @@
                             <a asp-area="" asp-controller="Home" asp-action="Index" class="nav-link text-white">Sair</a>
                         </li>
                     </ul>
+                    <div class="text-end">
+                        <button type="button" class="btn btn-outline-light me-2"><a asp-area="" asp-controller="Home"
+                                asp-action="Login" class="nav-link">Login</a></button>
+
+                        <button type="button" class="btn btn-warning"><a hsp-area="" asp-controller="Home"
+                                asp-action="CadastreSe" class="nav-link">Sign-up</a></button>
+                    </div>
                 </div>
             </div>
         </div>

@@ -29,6 +29,19 @@ namespace Bike.Controllers
             return View("ClientesCadastrados");
         }
 
+        [HttpPost]
+        public IActionResult AtendentesCadastrados()
+        {
+            return View("AtendentesCadastrados");
+        }
+
+        [HttpPost]
+        public IActionResult HistoricoBikes()
+        {
+            return View("historicoAdim");
+        }
+
+
         [HttpGet]
         public IActionResult cadastroBicicleta()
         {
@@ -80,6 +93,34 @@ namespace Bike.Controllers
             }
             return View("cadastroCliente");
         }
+
+
+        [HttpPost]
+        public IActionResult CadastroAtendentePost(Atendente atendente)
+        {
+           
+            /*var result = 0;
+           
+            var query = $"INSERT INTO endereco (Id_endereco, Numero, Rua, bairro, Cidade, cep) VALUES ({cliente.IdEndereco}, '{cliente.Numero}', '{cliente.Rua}', '{cliente.Bairro}', '{cliente.Cidade}', '{cliente.Cep}');"
+                      + $"INSERT INTO telefone (Id_tel, DDD, Telefone) VALUES ( {cliente.IdTelefone}, {cliente.Ddd}, {cliente.Telefone});"
+                      + $"INSERT INTO cliente (Id_cliente, Cpf, Nome, Sobrenome, Id_endereco,Id_tel,Email) VALUES ({cliente.IdCliente}, '{cliente.Cpf}', '{cliente.Nome}', '{cliente.Sobrenome}', {cliente.IdEndereco}, {cliente.IdTelefone}, '{cliente.Email}');";
+
+
+            if (cliente.Nome != null)
+            {
+                using (MySqlConnection connection = new MySqlConnection("server=localhost;userid=teste@;password=123456;database=bancotp"))
+                {
+                    connection.Open();
+                    using (MySqlCommand command = new MySqlCommand(query, connection))
+                    {
+                        result = command.ExecuteNonQuery();
+                    }
+                }
+            }*/
+            return View("cadastroFuncionario");
+        }
+
+
 
         // GET: AtendenteController/Details/5
         public ActionResult Details(int id)

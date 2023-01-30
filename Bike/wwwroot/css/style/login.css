@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Numans');
 
-html,
-body {
+.bodyLogin {
     background-image: url('https://getwallpapers.com/wallpaper/full/b/e/1/1012125-most-popular-mtb-wallpaper-1920x1080-download-free.jpg');
     background-size: cover;
     background-repeat: no-repeat;
@@ -9,29 +8,32 @@ body {
     font-family: 'Numans', sans-serif;
 }
 
-.container {
+.containerL {
     height: 100%;
     align-content: center;
 }
 
-.card {
-    height: 370px;
+.cardL {
+    height: 300px;
     margin-top: auto;
     margin-bottom: auto;
     width: 400px;
     background-color: rgba(0, 0, 0, 0.5) !important;
+    padding: 15px;
 }
 
 
-.card-header h3 {
+.card-headerL h3 {
     color: white;
 }
 
-.input-group-prepend span {
-    width: 50px;
+.input-group-prependL /*span*/ {
+    width: 45px;
     background-color: #FFC312;
     color: black;
-    border: 0 !important;
+    border: 0;
+    text-align: center;
+    text-justify: distribute;
 }
 
 
@@ -68,22 +70,22 @@ input:focus {
     margin-right: 5px;
 }
 
-.login_btn {
+.login_btnL {
     margin-top: 10px;
     color: black;
     background-color: #FFC312;
     width: 100px;
 }
 
-.login_btn:hover {
+.login_btnL:hover {
     color: black;
     background-color: white;
 }
 
-.links {
+.linksL {
     color: white;
 }
 
-.links a {
+.linksL a {
     margin-left: 4px;
 }
