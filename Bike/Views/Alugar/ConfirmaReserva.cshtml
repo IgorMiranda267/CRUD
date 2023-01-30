@@ -9,8 +9,9 @@
     var Qtd_marchas = 0;
     var Status_emprestimo = 0;
     var valor = "0";
-    var totalDias = 0;
-    var dataInicio = "";
+    Random random = new Random();
+    var valorBike = random.Next(50, 150);
+
     if (id == 599)
         valor = "70,00";
     if (id == 600)
@@ -148,8 +149,8 @@
                     <tr>
                         <th scope="row"></th>
                         <td>@Modelo </td>
-                        <td>R$ @valor </td>
-                        <td>R$ @totalDias </td>
+                        <td><span id="ValorBike">R$ @valorBike</span></td>
+                        <td><span id="ValorTotal">R$ 70dia</span></td>
                     </tr>
                     <tr class="table-dark">
                         <th scope="row"></th>
@@ -254,27 +255,27 @@
     const date = new Date();
     date.setHours(date.getHours() - 3);
     document.getElementById("data-inicio").value = date.toISOString().slice(0, 16);
-     document.getElementById("data-inicio").min = date.toISOString().slice(0, 16);
+    document.getElementById("data-inicio").min = date.toISOString().slice(0, 16);
 
     function calcularIntervalo() {
-         var dat = document.getElementById("dados");
+        var dat = document.getElementById("dados");
+        var valorTotal = document.getElementById("ValorTotal");
+        var ValorBike = document.getElementById("ValorBike");
         var dataInicio = document.getElementById("data-inicio").value;
         var dataFim = document.getElementById("data-devolucao").value;
 
         if (dataInicio != '' && dataFim != '') {
             if (dataInicio > dataFim) {
-
-
                 alert("Insira intervalo válido");
                 document.getElementById("data-inicio").value = '';
                 document.getElementById("data-devolucao").value = '';
-
             }
 
             else {
                 var diferencaEmMilisegundos = new Date(dataFim) - new Date(dataInicio);
                 var intervalo = Math.round(diferencaEmMilisegundos / (1000 * 60 * 60 * 24));
                 intervalo > 1 ? dat.textContent = intervalo + " dias" : dat.textContent = intervalo + " dia";
+                valorTotal.textContent = "R$ " + intervalo * ValorBike;
             }
         }
 
